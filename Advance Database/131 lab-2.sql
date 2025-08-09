@@ -10,7 +10,7 @@ CREATE TABLE Employee (
     HireDate DATE
 );
 
-INSERT INTO Employee (EmployeeID, Name, Department, Position, Salary, HireDate)
+INSERT INTO Employee 
 VALUES (101, 'Alice Roy', 'HR', 'Manager', 65000, '2018-06-01'),
 	   (102, 'Babu Khan', 'IT', 'Developer', 50000, '2019-03-15'),
        (103, 'Chadni Akter ', 'Finance', 'Analyst', 47000, '2020-01-10'),
@@ -21,36 +21,25 @@ VALUES (101, 'Alice Roy', 'HR', 'Manager', 65000, '2018-06-01'),
 
 
 SELECT * FROM Employee WHERE Name LIKE 'A%';
-
 SELECT Name, Department FROM Employee WHERE Position LIKE '%er';
-
-SELECT SUBSTRING(name, 1,3) FROM Employee;
-
-
+SELECT SUBSTRING(name, 1,3) As first_three_char FROM Employee;
 SELECT * FROM Employee  ORDER BY Salary DESC;
 
 
 SELECT Name FROM Employee WHERE Department ='Hr' UNION SELECT Name FROM Employee WHERE Department ='Finance'; 
-
 SELECT Name FROM Employee WHERE Department = 'IT' INTERSECT SELECT Name FROM Employee WHERE Department = 'Finance';
-
 SELECT Name FROM Employee WHERE Department = 'IT' EXCEPT SELECT Name FROM Employee WHERE Department = 'HR';
 
 
 
 SELECT SUM(Salary) AS TotalSalary FROM Employee;
-
 SELECT AVG(Salary) AS AvgITSalary FROM Employee WHERE Department = 'IT';
-
 SELECT MAX(Salary) AS MaxSalary FROM Employee;
-
 SELECT COUNT(*) AS FinanceCount FROM Employee WHERE Department = 'Finance';
 
 
 SELECT Department, AVG(Salary) AS AvgSalary FROM Employee GROUP BY Department;
-
 SELECT Department, AVG(Salary) AS AvgSalary FROM Employee GROUP BY Department HAVING AVG(Salary) > 50000;
-
 SELECT Position, COUNT(*) AS EmployeeCount FROM Employee GROUP BY Position;
 
 
